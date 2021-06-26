@@ -4,3 +4,5 @@ Create Test framework based
 - Maven - version - 3.8.0;
 - Testng - version - 7.3.0;
 - Selenide version - 5.19.0;
+- Selenium version - 3.141.59;
+- WebDriverManager version - 4.4.3;
