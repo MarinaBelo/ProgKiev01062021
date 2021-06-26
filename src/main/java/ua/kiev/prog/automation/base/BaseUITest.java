@@ -21,7 +21,7 @@ public class BaseUITest {
         /*options.addArguments("--headless");               //chrome будет запускаться без UI-части->ускоряет тесты, экономит память
         options.addArguments("--no-sandbox");             //использ.вместе с headless*/
 
-        driver = new ChromeDriver(options);                      // Create driver
+        driver = new ChromeDriver(options);                // Create driver
         driver.get("http://zvisno.com/");                 // Go to basic URL
         //driver.manage().window().maximize();
     }
