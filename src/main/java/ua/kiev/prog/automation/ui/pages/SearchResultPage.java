@@ -8,9 +8,6 @@ import ua.kiev.prog.automation.base.BasePage;
 import java.util.List;
 
 public class SearchResultPage extends BasePage {
-    public SearchResultPage(WebDriver driver) {
-        super(driver);
-    }
 
     @FindBy(xpath = "//div[@class='product-thumb']")
     public List<WebElement> searchResultElements;

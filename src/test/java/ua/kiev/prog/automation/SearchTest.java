@@ -15,7 +15,7 @@ public class SearchTest extends BaseUITest {
 
     @Test
     public void searchPageTest(){
-        SearchPage searchPage = new SearchPage(driver);
+        SearchPage searchPage = new SearchPage();
         //Поиск продукта на сайте
         SearchResultPage searchResultPage = searchPage.navigateToSearchResultPage(SEARCH_ELEMENT);
         Waiters.sleep(1000);

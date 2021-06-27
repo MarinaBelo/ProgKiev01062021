@@ -1,15 +1,13 @@
 package ua.kiev.prog.automation.ui.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
-import ua.kiev.prog.automation.base.BasePage;
+import ua.kiev.prog.automation.ui.pages.base.GuestSiteBasePage;
 
 import java.util.List;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends GuestSiteBasePage {
     @FindBy(xpath="//div[@id='content']//input[@id='input-email']" )
     public WebElement emailInput;
     @FindBy(xpath="//div[@id='content']//input[@id='input-password']")
@@ -19,13 +17,20 @@ public class LoginPage extends BasePage {
     @FindBys(@FindBy(xpath="//div[@id='account-login']//div[contains(@class, 'alert-danger')]"))
     public List<WebElement> errorMessages;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
-    public void login(String email, String password){
+    public AccountPage login(String email, String password){       //Authorization
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
         submitBtn.click();
+        return page(AccountPage.class);
+        //return login(email,password, true);
     }
+
+    //Пример переопределенного метода
+    /*public AccountPage login(String email, String password, boolean clickSubmit){
+        emailInput.sendKeys(email);
+        passwordInput.sendKeys(password);
+        if(clickSubmit)
+            submitBtn.click();
+        return page(AccountPage.class);
+    }*/
 }
