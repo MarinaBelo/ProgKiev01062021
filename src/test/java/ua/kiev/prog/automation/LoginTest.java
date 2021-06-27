@@ -26,8 +26,8 @@ public class LoginTest extends BaseUITest {
     public Object[][] loginData() {
         return new Object[][]{
             {EMAIL_VALID,               PASSWD_VALID, null},
-            /*{EMAIL_VALID.toUpperCase(), PASSWD_VALID, null},
-            {EMAIL_INVALID,             PASSWD_VALID,   "Предупреждение: Не совпадает адрес электронной почты и/или пароль."},*/
+            {EMAIL_VALID.toUpperCase(), PASSWD_VALID, null},
+            {EMAIL_INVALID,             PASSWD_VALID,   "Предупреждение: Не совпадает адрес электронной почты и/или пароль."},
             {EMAIL_VALID,               PASSWD_INVALID, "Предупреждение: Не совпадает адрес электронной почты и/или пароль."},    
         };
     }
