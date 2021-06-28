@@ -16,4 +16,8 @@ public class SearchPage extends BasePage {
         return new SearchResultPage();
     }
 
+    @Override
+    protected SelenideElement readyElement() {
+        return null;
+    }
 }

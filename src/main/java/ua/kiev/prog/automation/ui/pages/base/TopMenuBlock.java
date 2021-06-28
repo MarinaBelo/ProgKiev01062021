@@ -2,9 +2,15 @@ package ua.kiev.prog.automation.ui.pages.base;
 
 import com.codeborne.selenide.SelenideElement;
 import ua.kiev.prog.automation.base.Block;
+import ua.kiev.prog.automation.ui.widgets.Dropdown;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class TopMenuBlock extends Block {
+                                                       //поиск относительно элемента-родителя
+    final public Dropdown currency = new Dropdown(this.element.$x(".//form[@id='form-currency']//button[@data-toggle='dropdown']"));
+    final public Dropdown language = new Dropdown(this.element.$x(".//form[@id='form-language']//button[@data-toggle='dropdown']"));
+
     public TopMenuBlock() {
         super($x("//nav[@id='top']"));
     }

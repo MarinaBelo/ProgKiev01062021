@@ -7,10 +7,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import java.util.List;
 
 public class LoginPage extends GuestSiteBasePage {
-/*    @FindBy(xpath="//div[@id='content']//input[@id='input-email']")
-    @FindBy(xpath="//div[@id='content']//input[@id='input-password']")
-    @FindBy(xpath="//div[@id='content']//input[@type='submit']")
-    @FindBys(@FindBy(xpath="//div[@id='account-login']//div[contains(@class, 'alert-danger')]"))*/
+
     public SelenideElement emailInput           = $x("//div[@id='content']//input[@id='input-email']");
     public SelenideElement passwordInput        = $x("//div[@id='content']//input[@id='input-password']");
     public SelenideElement submitBtn            = $x("//div[@id='content']//input[@type='submit']");
@@ -22,6 +19,11 @@ public class LoginPage extends GuestSiteBasePage {
         submitBtn.click();
         return page(AccountPage.class);
         //return login(email,password, true);
+    }
+
+    @Override
+    protected SelenideElement readyElement() {
+        return emailInput;
     }
 
     //Пример переопределенного метода

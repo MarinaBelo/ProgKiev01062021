@@ -17,6 +17,9 @@
         <selenide.version>5.19.0</selenide.version>
         <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <cucumber-java.version>6.10.4</cucumber-java.version>
+        <cucumber-testng.version>6.10.4</cucumber-testng.version>
+
 
         <!-- Plugins version -->
         <plugin.maven.compiler.version>3.8.0</plugin.maven.compiler.version>
@@ -46,6 +49,18 @@
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>${selenide.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-java.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber-testng.version}</version>
         </dependency>
     </dependencies>
 

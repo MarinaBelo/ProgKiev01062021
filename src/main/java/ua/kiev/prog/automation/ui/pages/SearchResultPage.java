@@ -24,4 +24,9 @@ public class SearchResultPage extends BasePage {
     public WebElement getSearchElement() {
         return searchElement;
     }
+
+    @Override
+    protected SelenideElement readyElement() {
+        return null;
+    }
 }

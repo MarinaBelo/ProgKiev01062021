@@ -10,13 +10,13 @@ public class BaseUITest {
 
     protected WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
         driver = Session.getInstance().driver();
         WebDriverRunner.setWebDriver(driver);                       //driver для Selenide
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void afterMethod() {
         Session.getInstance().quit();
     }
