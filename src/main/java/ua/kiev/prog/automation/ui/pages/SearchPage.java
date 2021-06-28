@@ -1,16 +1,14 @@
 package ua.kiev.prog.automation.ui.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import com.codeborne.selenide.SelenideElement;
 import ua.kiev.prog.automation.base.BasePage;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class SearchPage extends BasePage {
-
-    @FindBy(xpath = "//div[@id='search']//input[@name='search']")
-    public WebElement searchField;
-    @FindBy(xpath = "//div[@id='search']//button[@type='button']")
-    public WebElement searchButton;
+    /*@FindBy(xpath = "//div[@id='search']//button[@type='button']")
+    @FindBy(xpath = "//div[@id='search']//input[@name='search']")*/
+    public SelenideElement searchField  = $x("//div[@id='search']//input[@name='search']");
+    public SelenideElement searchButton = $x("//div[@id='search']//button[@type='button']");
 
     public SearchResultPage navigateToSearchResultPage(String searchElement){
         searchField.sendKeys(searchElement);

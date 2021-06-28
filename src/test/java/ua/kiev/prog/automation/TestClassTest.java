@@ -11,6 +11,7 @@ import java.util.List;
 
 public class TestClassTest extends BaseUITest {
 
+    //Не актуальный пример тестов/Можно удалить -> применили паттерны
     @Test
     public void testMethod() {
         //WebElement softwareLink = driver.findElement(By.xpath("//nav[@id='menu']//ul/li/a[text()='Software']"));

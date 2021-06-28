@@ -1,35 +1,35 @@
 package ua.kiev.prog.automation.ui.pages.base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import com.codeborne.selenide.SelenideElement;
 import ua.kiev.prog.automation.base.Block;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class TopMenuBlock extends Block {
     public TopMenuBlock() {
-        super(By.xpath("//nav[@id='top']"));
+        super($x("//nav[@id='top']"));
     }
 
-    private WebElement _getLinkLocatorStr(String faName){
-        return this.element.findElement(By.xpath(".//div[@id='top-links']/ul/li/a/i[contains(@class, '"+ faName+"')]/.."));
-    }                                             //ищем относительно элемента из базового класса->xpath через точку
+    private SelenideElement _getLinkLocatorStr(String faName){
+        return this.element.$x(".//div[@id='top-links']/ul/li/a/i[contains(@class, '"+ faName+"')]/..");
+    }                          //ищем относительно элемента из базового класса->xpath через точку
 
-    public WebElement contact(){
+    public SelenideElement contact(){
         return _getLinkLocatorStr("fa-phone");
     }
 
-    protected WebElement account(){
+    protected SelenideElement account(){
         return _getLinkLocatorStr("fa-user");
     }
 
-    public WebElement bookmarks(){
+    public SelenideElement bookmarks(){
         return _getLinkLocatorStr("fa-heart");
     }
 
-    public WebElement cart(){
+    public SelenideElement cart(){
         return _getLinkLocatorStr("fa-shopping-cart");
     }
 
-    public WebElement checkout(){
+    public SelenideElement checkout(){
         return _getLinkLocatorStr("fa-share");
     }
 }

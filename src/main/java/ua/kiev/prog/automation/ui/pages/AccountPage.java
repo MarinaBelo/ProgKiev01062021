@@ -1,6 +1,6 @@
 package ua.kiev.prog.automation.ui.pages;
 
-import ua.kiev.prog.automation.base.BasePage;
+import ua.kiev.prog.automation.ui.pages.base.UserSiteBasePage;
 
-public class AccountPage extends BasePage {
+public class AccountPage extends UserSiteBasePage {
 }

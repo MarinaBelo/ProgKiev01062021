@@ -9,7 +9,7 @@ public class BasePage {
     final protected WebDriver driver = Session.getInstance().driver();  // Получение объекта из синглтона
 
     public BasePage() {
-        PageFactory.initElements(driver, this);                         // Инициализация selenium page factory
+        //PageFactory.initElements(driver, this);                         // Инициализация selenium page factory
     }
 
     protected <T extends BasePage> T page(Class<T> pageClass) {         // Generic метод, возвращает объект типа T(который наследуется от BasePage) по классу этого объекта

@@ -1,5 +1,6 @@
 package ua.kiev.prog.automation;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -44,7 +45,7 @@ public class LoginTest extends BaseUITest {
         AccountPage accountPage = loginPage.login(email, password);
         Waiters.sleep(1000);
 
-        List<WebElement> errorMessages = loginPage.errorMessages;
+        List<SelenideElement> errorMessages = loginPage.errorMessages;
         if (errorMessage == null) {
             Assert.assertEquals(errorMessages.size(), 0, "Error messages are shown" +
                     //errorMessageList.stream().map(e->e.getText()).collect(Collectors.toList())); //преобразовываем из листа WebElements в лист Strings
