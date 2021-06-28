@@ -1,6 +1,6 @@
 package ua.kiev.prog.automation.ui.pages.common.guest;
 
-import org.openqa.selenium.WebElement;
+import com.codeborne.selenide.SelenideElement;
 import ua.kiev.prog.automation.ui.pages.base.TopMenuBlock;
 
 public class GuestTopMenuBlock extends TopMenuBlock {
@@ -9,13 +9,13 @@ public class GuestTopMenuBlock extends TopMenuBlock {
         return this.account().$x("./following-sibling::ul").isDisplayed();
     }
 
-    public WebElement accountRegistration(){                                                //Registration
+    public SelenideElement accountRegistration(){                                                //Registration
         if(!isAccountUIDisplayed())
             this.account().click();
         return this.account().$x("./following-sibling::ul/li[1]/a");
     }
 
-    public WebElement accountAuthorization(){                                               //Authorization
+    public SelenideElement accountAuthorization(){                                               //Authorization
         if(!isAccountUIDisplayed())
             this.account().click();
         return this.account().$x("./following-sibling::ul/li[2]/a");
