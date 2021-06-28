@@ -24,12 +24,11 @@ public class MainMenuTest extends BaseUITest {
     }
 
     @Test(dataProvider = "mainMenuItems")
-    public void mainMenuTest(String menu, String subMenu, Integer elementCount){
+    public void mainMenuTest(String menu, String subMenu, Integer expectedElementCount){
         IndexPage indexPage = new IndexPage();
         CategoryPage categoryPage = indexPage.mainMenu.goToMenu(menu, subMenu);//после клика->newPage
-        Integer actualElementCount = categoryPage.getProductCount();           //на новой СategoryPage считаем
-
-        Assert.assertEquals(actualElementCount, elementCount, "Expected product count");
+        //Integer actualElementCount = categoryPage.getProductCount();           //на новой СategoryPage считаем
+        Assert.assertEquals(categoryPage.getProductCount(), expectedElementCount, "Expected product count");
     }
 
 
