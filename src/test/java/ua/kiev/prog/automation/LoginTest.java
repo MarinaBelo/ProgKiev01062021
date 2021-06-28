@@ -1,6 +1,5 @@
 package ua.kiev.prog.automation;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -10,10 +9,9 @@ import ua.kiev.prog.automation.tools.Util;
 import ua.kiev.prog.automation.tools.Waiters;
 import ua.kiev.prog.automation.ui.pages.AccountPage;
 import ua.kiev.prog.automation.ui.pages.LoginPage;
-import ua.kiev.prog.automation.ui.pages.common.guest.IndexPage;
+import ua.kiev.prog.automation.ui.pages.IndexPage;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class LoginTest extends BaseUITest {
