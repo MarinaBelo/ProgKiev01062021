@@ -6,3 +6,4 @@ Create Test framework based
 - Selenide version - 5.19.0;
 - Selenium version - 3.141.59;
 - WebDriverManager version - 4.4.3;
+- Cucumber version - 6.10.4;
