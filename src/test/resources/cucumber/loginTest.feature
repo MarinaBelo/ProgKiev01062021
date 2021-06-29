@@ -2,8 +2,8 @@ Feature: Login Feature
 
   Scenario: Valid login test
     Given I am navigating to login page
-    And  I enter "yurii.voronenko@gmail.com" to email field
-    And  I enter "12345678" to password field
+    And  I enter valid email "yurii.voronenko@gmail.com" to email field
+    And  I enter valid password "12345678" to password field
     And  I click login button
     Then account page is displayed
 

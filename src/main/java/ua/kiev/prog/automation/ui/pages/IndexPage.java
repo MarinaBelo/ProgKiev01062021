@@ -13,4 +13,9 @@ public class IndexPage extends GuestSiteBasePage {
     protected SelenideElement readyElement() {
         return topMenu.accountAuthorization();
     }
+
+    @Override
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
 }

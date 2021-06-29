@@ -20,4 +20,9 @@ public class SearchPage extends BasePage {
     protected SelenideElement readyElement() {
         return null;
     }
+
+    @Override
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
 }

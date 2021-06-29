@@ -39,4 +39,7 @@ public abstract class BasePage {
     }
 
     abstract protected SelenideElement readyElement ();
+
+    abstract public String getCurrentUrl ();
+
 }
