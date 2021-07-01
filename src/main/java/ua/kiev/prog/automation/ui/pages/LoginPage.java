@@ -21,6 +21,16 @@ public class LoginPage extends GuestSiteBasePage {
         //return login(email,password, true);
     }
 
+    public boolean isErrorMessageDisplayed(String message){
+        message = message.trim();
+        for(SelenideElement elem: errorMessages){
+            if (elem.getText().equals(message)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     protected SelenideElement readyElement() {
         return emailInput;

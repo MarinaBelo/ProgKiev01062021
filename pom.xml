@@ -15,11 +15,11 @@
         <!-- Dependencies version -->
         <testng.version>7.3.0</testng.version>
         <selenide.version>5.19.0</selenide.version>
-        <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <cucumber-java.version>6.10.4</cucumber-java.version>
         <cucumber-testng.version>6.10.4</cucumber-testng.version>
-
+        <slf4j.version>1.7.30</slf4j.version>
+        <rest-assured.version>4.4.0</rest-assured.version>
 
         <!-- Plugins version -->
         <plugin.maven.compiler.version>3.8.0</plugin.maven.compiler.version>
@@ -32,12 +32,6 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java &ndash;&gt;
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>-->
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -62,6 +56,25 @@
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber-testng.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+            <!--<scope>compile</scope>-->
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            </dependency>
     </dependencies>
 
     <build>

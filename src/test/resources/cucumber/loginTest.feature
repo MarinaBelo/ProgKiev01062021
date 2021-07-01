@@ -1,22 +1,17 @@
 Feature: Login Feature
 
-  Scenario: Valid login test
+  @regression @login
+  Scenario Outline: Login tests <email> -> <result>
     Given I am navigating to login page
-    And  I enter valid email "yurii.voronenko@gmail.com" to email field
-    And  I enter valid password "12345678" to password field
+    And  I enter "<email>" to email field
+    And  I enter "<password>" to password field
     And  I click login button
-    Then account page is displayed
+    Then Login result must be "<result>" and error message "<error_message>" is displayed
 
-  Scenario: Invalid login test (invalid email)
-    Given I am navigating to login page
-    And  I enter invalid email "invalidLogin@gmail123" to email field
-    And  I enter valid password "12345678" to password field
-    And  I click login button
-    Then account page is not displayed
+    Examples:
+      | email                     | password       | result  | error_message                                                      |
+      | yurii.voronenko@gmail.com | 12345678       | success | -------------                                                      |
+      | YURII.VORONENKO@GMAIL.COM | 12345678       | success | -------------                                                      |
+      | $_INVALID_EMAIL_%         | 12345678       | fail    | Предупреждение: Не совпадает адрес электронной почты и/или пароль. |
+      | yurii.voronenko@gmail.com | invalidPass123 | fail    | Предупреждение: Не совпадает адрес электронной почты и/или пароль. |
 
-  Scenario: Invalid login test (invalid password)
-    Given I am navigating to login page
-    And  I enter valid email "yurii.voronenko@gmail.com" to email field
-    And  I enter invalid password "123456" to password field
-    And  I click login button
-    Then account page is not displayed

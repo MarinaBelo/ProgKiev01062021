@@ -21,13 +21,16 @@ public class LoginTestSteps {
         Session.getInstance().driver().get("http://zvisno.com/index.php?route=account/login");
     }
 
-    @When("^I enter valid email \"(.+?)\" to email field$")
-    public void iEnterValidEmailToEmailField(String value) {
+    @When("^I enter \"(.+?)\" to email field$")
+    public void iEnterEmailToEmailField(String value) {
+        if ("$_INVALID_EMAIL_%".equals(value)){
+            value = Util.randomString(10)+"@domain.com";
+        }
         loginPage.emailInput.sendKeys(value);
     }
 
-    @And("^I enter valid password \"(.+?)\" to password field$")
-    public void iEnterValidPasswordToPasswordField(String value) {
+    @And("^I enter \"(.+?)\" to password field$")
+    public void iEnterPasswordToPasswordField(String value) {
         loginPage.passwordInput.sendKeys(value);
     }
 
@@ -35,25 +38,23 @@ public class LoginTestSteps {
     public void iClickLoginButton() {
         loginPage.submitBtn.click();
     }
+
     @Then("^account page is displayed$")
     public void AccountPageIsDisplayed() {
         accountPage.confirmPage();
     }
 
-    //Scenario #2
-    @When("^I enter invalid email \"(.+?)\" to email field$")
-    public void iEnterInvalidEmailToEmailField(String value) {
-        loginPage.emailInput.sendKeys(value = Util.randomString(10)+"@domain.com");
-    }
-
-    @Then("^account page is not displayed$")
-    public void AccountPageIsNotDisplayed() {
-        Assert.assertFalse(accountPage.readyElement().isDisplayed(), "Account Page Is Displayed");
-    }
-
-    //Scenario #3
-    @And("^I enter invalid password \"(.+?)\" to password field$")
-    public void iEnterInvalidPasswordToPasswordField(String value) {
-        loginPage.passwordInput.sendKeys(value);
+    @Then("^Login result must be \"(.+?)\" and error message \"(.+?)\" is displayed$")
+    public void loginResultMustBeResultAndErrorMessageIsDisplayed(String result, String errorMessage){
+        if ("success".equalsIgnoreCase(result)){
+            accountPage.confirmPage();
+        }else if("fail".equalsIgnoreCase(result)){
+            loginPage.confirmPage();
+            Assert.assertTrue(loginPage.isErrorMessageDisplayed(errorMessage),
+                    "Error message is not displayed: " + errorMessage);
+        }else
+            throw new RuntimeException("Unknown result: " + result);
     }
 }
+
+
