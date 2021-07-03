@@ -3,6 +3,7 @@ package ua.kiev.prog.automation.tools;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.openqa.selenium.Cookie;
+import ua.kiev.prog.automation.base.Config;
 import ua.kiev.prog.automation.base.Session;
 
 import java.util.Map;
@@ -14,9 +15,9 @@ public class API {
     public  void loginIntoWebsite(){
 
         Response response = RestAssured.given()
-                .param("email", "yurii.voronenko@gmail.com")
-                .param("password", "12345678")
-                .post("http://zvisno.com/index.php?route=account/login")
+                .param("email", Config.SITE_USERNAME.value)
+                .param("password", Config.SITE_PASSWORD.value)
+                .post(Config.SITE_URL.value + "/index.php?route=account/login")
                 .then().extract().response();
         for (Map.Entry<String, String> cookie: response.getCookies().entrySet()){ //берем ключ-значение из каждого куки
             String param = cookie.getKey();

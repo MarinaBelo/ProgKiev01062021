@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ua.kiev.prog.automation.base.BaseUITest;
+import ua.kiev.prog.automation.base.Config;
 import ua.kiev.prog.automation.tools.Util;
 import ua.kiev.prog.automation.tools.Waiters;
 import ua.kiev.prog.automation.ui.pages.AccountPage;
@@ -17,23 +18,18 @@ import java.util.stream.Collectors;
 
 public class LoginTest extends BaseUITest {
 
-    /*static private final String LOGIN_URL         = "http://zvisno.com/index.php?route=account/login";
-    static private final By ACCOUNT_LOCATOR       = By.xpath("//div[@id='top-links']/ul/li/a/i[contains(@class, 'fa-user')]/..");
-    static private final By AUTH_LOCATOR          = By.xpath("./following-sibling::ul/li[2]/a");*/
-    static private final String EMAIL_VALID       = "yurii.voronenko@gmail.com";
     static private final String EMAIL_INVALID     = Util.randomString(10)+"@domain.com"; //генерация рандомных невалидных данных
     //static private final String EMAIL_INVALID     = UUID.randomUUID().toString();           //генерация рандомных невалидных данных, но не самый красивый вариант для имейла
     //static private final String EMAIL_INVALID     = "invalidLogin@gmail123";
-    static private final String PASSWD_VALID      = "12345678";
     static private final String PASSWD_INVALID    = "123456";
 
     @DataProvider(name = "loginData")
     public Object[][] loginData() {
         return new Object[][]{
-            {EMAIL_VALID,               PASSWD_VALID, null},
-            {EMAIL_VALID.toUpperCase(), PASSWD_VALID, null},
-            {EMAIL_INVALID,             PASSWD_VALID,   "Предупреждение: Не совпадает адрес электронной почты и/или пароль."},
-            {EMAIL_VALID,               PASSWD_INVALID, "Предупреждение: Не совпадает адрес электронной почты и/или пароль."},    
+            {Config.SITE_USERNAME.value,               Config.SITE_PASSWORD.value, null},
+            {Config.SITE_USERNAME.value.toUpperCase(), Config.SITE_PASSWORD.value, null},
+            {EMAIL_INVALID,                            Config.SITE_PASSWORD.value, "Предупреждение: Не совпадает адрес электронной почты и/или пароль."},
+            {Config.SITE_USERNAME.value,               PASSWD_INVALID,             "Предупреждение: Не совпадает адрес электронной почты и/или пароль."},
         };
     }
 

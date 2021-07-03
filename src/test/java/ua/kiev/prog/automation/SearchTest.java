@@ -3,6 +3,7 @@ package ua.kiev.prog.automation;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.kiev.prog.automation.base.BaseUITest;
+import ua.kiev.prog.automation.base.Config;
 import ua.kiev.prog.automation.tools.Waiters;
 import ua.kiev.prog.automation.ui.pages.SearchPage;
 import ua.kiev.prog.automation.ui.pages.SearchResultPage;
@@ -10,7 +11,7 @@ import ua.kiev.prog.automation.ui.pages.SearchResultPage;
 public class SearchTest extends BaseUITest {
 
     static private final String SEARCH_ELEMENT        = "Apple Cinema 30\"";
-    static private final String SEARCH_PAGE_URL       = "http://zvisno.com/index.php?route=product/search";
+    static private final String SEARCH_PAGE_URL       = Config.SITE_URL.value + "/index.php?route=product/search";
     int expectedQuantityOfElementsResult              = 1;
 
     @Test

@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+import ua.kiev.prog.automation.base.Config;
 import ua.kiev.prog.automation.base.Session;
 import ua.kiev.prog.automation.tools.Util;
 import ua.kiev.prog.automation.ui.pages.AccountPage;
@@ -18,7 +19,7 @@ public class LoginTestSteps {
     //Scenario #1
     @Given("^I am navigating to login page$")
     public void iAmNavigatingToLoginPage(){
-        Session.getInstance().driver().get("http://zvisno.com/index.php?route=account/login");
+        Session.getInstance().driver().get(Config.SITE_URL.value + "/index.php?route=account/login");
     }
 
     @When("^I enter \"(.+?)\" to email field$")

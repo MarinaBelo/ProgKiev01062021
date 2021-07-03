@@ -1,12 +1,15 @@
 package ua.kiev.prog.automation.ui.pages;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import ua.kiev.prog.automation.base.BasePage;
+import ua.kiev.prog.automation.ui.widgets.product.ProductLayout;
+import java.util.ArrayList;
+import java.util.List;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class SearchPage extends BasePage {
-    /*@FindBy(xpath = "//div[@id='search']//button[@type='button']")
-    @FindBy(xpath = "//div[@id='search']//input[@name='search']")*/
+
     public SelenideElement searchField  = $x("//div[@id='search']//input[@name='search']");
     public SelenideElement searchButton = $x("//div[@id='search']//button[@type='button']");
 
@@ -18,6 +21,6 @@ public class SearchPage extends BasePage {
 
     @Override
     protected SelenideElement readyElement() {
-        return null;
+        return Selenide.$x("//div[@id='search']//button[@type='button']");
     }
 }
