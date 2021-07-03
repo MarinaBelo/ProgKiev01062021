@@ -46,6 +46,17 @@ public class Dropdown extends Widget {
         }
     }
 
+    public void selectValue (Integer index){
+        if (!_menuList.isDisplayed()) {
+            this.element.click();
+        }
+        List<SelenideElement> list = _menuList.$$x("./li");
+        if (index >=list.size()){
+            throw new RuntimeException("Index value is greater then list size.Val :"  + index + "Size of list: " + list.size());
+        }
+        list.get(index).click();
+    }
+
     public boolean hasValue (String value) {
         return _menuList.$x("./li[normalize-space()='"+value+"']").exists();
     }

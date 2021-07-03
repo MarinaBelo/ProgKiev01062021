@@ -32,3 +32,16 @@ https://javarush.ru/groups/posts/1944-iskljuchenija-checked-unchecked-i-svoi-sob
 проверять негативные кейсы логина, как в тесте LoginTest
 Для не валидного логина сделайте отдельный степ, например:
 I enter invalid email а внутри уже генерирование имейла
+
+Практика №5
+Описать правый блок навигации по аккаунту AccountNavigationBlock,
+так что бы можно было получать текст ссылки по индексу пункта меню.
+Пример использования:
+
+AccountPage accountPage = userIndexPage.topMenu.goToAccountPage();
+String link = accountPage.accountNavigation.getLinkHref(0);
+// Возвращает http://zvisno.com/index.php?route=account/account
+
+Дополнить тест AccountPageTest таким образм, что бы он проверял последовательность ссылок в блоке навигации
+(добавьте список в свойсто теста)
+Используйте SoftAssert

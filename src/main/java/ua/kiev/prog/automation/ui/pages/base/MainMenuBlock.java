@@ -1,6 +1,5 @@
 package ua.kiev.prog.automation.ui.pages.base;
 
-import org.openqa.selenium.By;
 import ua.kiev.prog.automation.base.Block;
 import ua.kiev.prog.automation.ui.pages.CategoryPage;
 import static com.codeborne.selenide.Selenide.$x;

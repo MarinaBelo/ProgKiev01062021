@@ -36,11 +36,6 @@ public class LoginPage extends GuestSiteBasePage {
         return emailInput;
     }
 
-    @Override
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
-
     //Пример переопределенного метода
     /*public AccountPage login(String email, String password, boolean clickSubmit){
         emailInput.sendKeys(email);

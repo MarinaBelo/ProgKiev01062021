@@ -1,20 +1,20 @@
 package ua.kiev.prog.automation.ui.pages;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import ua.kiev.prog.automation.ui.pages.base.GuestSiteBasePage;
 
 public class IndexPage extends GuestSiteBasePage {
     public LoginPage goToLoginPage(){
-        topMenu.accountAuthorization().click();
+        topMenu.goToAuthorization();
         return page(LoginPage.class);
     }
 
     @Override
     protected SelenideElement readyElement() {
-        return topMenu.accountAuthorization();
+        return Selenide.$x("//nav[@id='top']//ul/li/a[contains(@href, 'account/login')]");
     }
 
-    @Override
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }

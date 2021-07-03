@@ -15,7 +15,6 @@ public class CategoryPage extends BasePage {
         return Selenide.$x("//button[@id='list-view']");
     }
 
-    @Override
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }

@@ -23,8 +23,8 @@ public class TopMenuBlock extends Block {
         return _getLinkLocatorStr("fa-phone");
     }
 
-    protected SelenideElement account(){
-        return _getLinkLocatorStr("fa-user");
+    protected Dropdown account(){
+        return new Dropdown (_getLinkLocatorStr("fa-user"));
     }
 
     public SelenideElement bookmarks(){
