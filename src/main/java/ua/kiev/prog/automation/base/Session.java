@@ -19,6 +19,14 @@ public class Session {
         private Session() {
         }                                                           // Приватный конструктор для запрета создания объекта извне
 
+        private MySQLDriver _mysql;
+
+        final public MySQLDriver mysql() {
+            if(_mysql==null)
+                _mysql= new MySQLDriver();
+            return  _mysql;
+        }
+
         // Описание объекта
         private WebDriver _driver;                                  // Приватное свойство для хранения экземпляра веб драйвера
 

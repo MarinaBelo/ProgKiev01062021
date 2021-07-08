@@ -13,6 +13,12 @@ public class Config {
     final static public Param SITE_USERNAME = new Param("site.username");
     final static public Param SITE_PASSWORD = new Param("site.password");
 
+    final static public Param MYSQL_HOST = new Param("mysql.host");
+    final static public Param MYSQL_PORT = new Param("mysql.port");
+    final static public Param MYSQL_DB = new Param("mysql.database");
+    final static public Param MYSQL_USER = new Param("mysql.username");
+    final static public Param MYSQL_PASSWD = new Param("mysql.password");
+
     final static public class Param{
         final public String value;
 
@@ -39,6 +45,11 @@ public class Config {
 
         final public boolean isTrue(){
             return "true".equalsIgnoreCase(value);
+        }
+
+        @Override
+        final public String toString() {
+            return this.value;
         }
     }
 

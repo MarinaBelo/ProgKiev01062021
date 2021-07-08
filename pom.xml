@@ -20,6 +20,11 @@
         <cucumber-testng.version>6.10.4</cucumber-testng.version>
         <slf4j.version>1.7.30</slf4j.version>
         <rest-assured.version>4.4.0</rest-assured.version>
+        <mysql-connector-java.version>8.0.25</mysql-connector-java.version>
+        <lombok.version>1.18.20</lombok.version>
+        <commons-text.version>1.9</commons-text.version>
+
+
 
         <!-- Plugins version -->
         <plugin.maven.compiler.version>3.8.0</plugin.maven.compiler.version>
@@ -75,6 +80,24 @@
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
             </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
