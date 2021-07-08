@@ -1,15 +1,16 @@
 package ua.kiev.prog.automation.ui.pages.common.guest;
 
-import ua.kiev.prog.automation.ui.pages.AccountPage;
+import ua.kiev.prog.automation.ui.pages.LoginPage;
 import ua.kiev.prog.automation.ui.pages.base.TopMenuBlock;
 
 public class GuestTopMenuBlock extends TopMenuBlock {
 
     public void goToRegistration(){
-        this.account().selectValue(1);//Регистрация
+        this.account().selectValue(0);//Регистрация
     }
 
-    public void goToAuthorization(){
+    public LoginPage goToAuthorization(){
         this.account().selectValue(1); //Авторизация
+        return page(LoginPage.class);
     }
 }

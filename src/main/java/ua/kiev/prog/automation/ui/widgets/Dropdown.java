@@ -2,6 +2,7 @@ package ua.kiev.prog.automation.ui.widgets;
 
 import com.codeborne.selenide.SelenideElement;
 import ua.kiev.prog.automation.base.Widget;
+import ua.kiev.prog.automation.tools.Waiters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,7 @@ public class Dropdown extends Widget {
         if (index >=list.size()){
             throw new RuntimeException("Index value is greater then list size.Val :"  + index + "Size of list: " + list.size());
         }
+        Waiters.sleep(1000);
         list.get(index).click();
     }
 

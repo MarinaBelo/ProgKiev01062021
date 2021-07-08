@@ -8,7 +8,7 @@ public class ProductCartBlock extends Block {
 
     private SelenideElement      cartTotal   = this.element.$x(".//span[@id='cart-total']");
     private SelenideElement      popUp       = this.element.$x(".//ul[contains(@class, 'dropdown-menu')]");
-    private SelenideElement      cleanButton = this.popUp.$x(".//button[contains(@onclick,'cart-remove')]");
+    private SelenideElement      cleanButton = this.popUp.$x(".//button[contains(@onclick,'cart.remove')]");
 
 
     final public SelenideElement button = this.element.$x("./button");
@@ -30,9 +30,9 @@ public class ProductCartBlock extends Block {
     }
 
     public void clean() {
-        button.click();
-        if(popUp.isDisplayed())
-            if (cleanButton.exists())
+        if(!popUp.isDisplayed())
+            button.click();
+        if (cleanButton.exists())
             cleanButton.click();
     }
 }

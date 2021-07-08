@@ -45,3 +45,13 @@ String link = accountPage.accountNavigation.getLinkHref(0);
 Дополнить тест AccountPageTest таким образм, что бы он проверял последовательность ссылок в блоке навигации
 (добавьте список в свойсто теста)
 Используйте SoftAssert
+
+Практика №6
+Сделать рефакторинг теста AddProductToCartTest, сделать следующие изменения:
+1/Добавить метод SearchResultPage search(String text) в класс SearchBlock,
+-метод должен вводить данные в поиск, нажимать кнопку и возвращать объект страницы,
+-использовать этот метод в тесте вместо прямого ввода и клика
+2/Использовать метод login(String email, String password) из класса LoginPage
+вместо прямого ввода имейла и пароля
+3/Изменить метод goToAuthorization в классе GuestTopMenuBlock,
+что бы он возвращал LoginPage, внести соответствующие изменения в тест

@@ -13,11 +13,11 @@ public class LoginPage extends GuestSiteBasePage {
     public SelenideElement submitBtn            = $x("//div[@id='content']//input[@type='submit']");
     public List<SelenideElement> errorMessages  = $$x("//div[@id='account-login']//div[contains(@class, 'alert-danger')]");
 
-    public AccountPage login(String email, String password){       //Authorization
+    public UserIndexPage login(String email, String password){       //Authorization
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
         submitBtn.click();
-        return page(AccountPage.class);
+        return page(UserIndexPage.class);
         //return login(email,password, true);
     }
 

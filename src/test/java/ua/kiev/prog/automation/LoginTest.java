@@ -12,6 +12,7 @@ import ua.kiev.prog.automation.tools.Waiters;
 import ua.kiev.prog.automation.ui.pages.AccountPage;
 import ua.kiev.prog.automation.ui.pages.LoginPage;
 import ua.kiev.prog.automation.ui.pages.IndexPage;
+import ua.kiev.prog.automation.ui.pages.UserIndexPage;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,7 +39,7 @@ public class LoginTest extends BaseUITest {
         System.out.println(email);
         IndexPage landingPage = new IndexPage();
         LoginPage loginPage = landingPage.goToLoginPage();
-        AccountPage accountPage = loginPage.login(email, password);
+        UserIndexPage accountPage = loginPage.login(email, password);
         Waiters.sleep(1000);
 
         List<SelenideElement> errorMessages = loginPage.errorMessages;
