@@ -8,6 +8,7 @@ import ua.kiev.prog.automation.tools.db.Category;
 import ua.kiev.prog.automation.ui.pages.CategoryPage;
 import ua.kiev.prog.automation.ui.pages.IndexPage;
 
+import java.util.List;
 import java.util.Map;
 
 public class MainMenuTest extends BaseUITest {
@@ -32,17 +33,29 @@ public class MainMenuTest extends BaseUITest {
         CategoryPage categoryPage = indexPage.mainMenu.goToMenu(menu, subMenu);             //после клика->newPage
         //Integer actualElementCount = categoryPage.getProductCount();                      //на новой СategoryPage считаем
         Assert.assertEquals(categoryPage.getProductCount(), expectedElementCount,
-                            "Expected product count");
+                            "Count of products is not correct");
     }
 
     @Test
-    public void checkMenuMap () {
-        Map<Integer, Category.Item> categoryMap = db.category.getCategories();
+    public void checkMenuMap() {
+        // structure
+/*        Map<Integer, Category.Item> categoryMap = db.category.getCategories();
         for (Map.Entry<Integer, Category.Item> pair: categoryMap.entrySet()){
             Category.Item item = pair.getValue();
             System.out.println(pair.getKey() + " -[" + item.getCategoryId() +
                     " ," +item.getParentId() +" ," + item.getName() + " -]"
                     );
+        }*/
+
+        List<Category.TreeItem> tree = db.category.getCategoriesTree();
+        for (Category.TreeItem treeItem : tree) {
+            System.out.println(treeItem.getItem().getName() + " - " + treeItem.getChilds().size());
+            for (Category.TreeItem childTreeItem : treeItem.getChilds()) {
+                System.out.println("\t" + childTreeItem.getItem().getName() + " - " + childTreeItem.getChilds().size());
+                for (Category.TreeItem subChildTreeItem : childTreeItem.getChilds()) {
+                    System.out.println("\t\t" + subChildTreeItem.getItem().getName() + " - " + subChildTreeItem.getChilds().size());
+                }
+            }
         }
     }
 }

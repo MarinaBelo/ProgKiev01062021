@@ -55,3 +55,22 @@ String link = accountPage.accountNavigation.getLinkHref(0);
 вместо прямого ввода имейла и пароля
 3/Изменить метод goToAuthorization в классе GuestTopMenuBlock,
 что бы он возвращал LoginPage, внести соответствующие изменения в тест
+
+Практика №7:
+Дополнить тест MainMenuTest метод checkMenuMap таким образом что бы заполнялась древоввидная структура данных
+Элементы у которых parentId равны 0 должны быть на верхнем уровне, а под ними элементы у которых parentId равен их categoryId
+Пример кода с комментариями ниже
+
+@Test
+public void checkMenuMap() {
+    // structure
+    Map<Integer, Category.Item> categoryMap = db.category.getCategories();
+    for(Map.Entry<Integer, Category.Item> pair : categoryMap.entrySet()) {
+        Category.Item item = pair.getValue();
+        System.out.println(pair.getKey() + " - [" + item.getCategoryId() + ", " + item.getParentId() + ", " + item.getName() + "]");
+        // if parent id equals 0 -> top level item
+        // else put item under other item
+    }
+    // foreach for top level items
+    // go to menu or sub menu
+}
