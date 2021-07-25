@@ -29,7 +29,7 @@ public class AccountPageTest extends BaseUITest {
             Config.SITE_URL.value + "/index.php?route=account/logout"
     );
 
-    @Test
+    @Test(groups = {"regression"})
     public void testRightMenu (){
         api.loginIntoWebsite();
         userIndexPage.confirmPage();

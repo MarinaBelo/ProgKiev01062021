@@ -23,7 +23,7 @@ public class AddProductToCartTest extends BaseUITest {
         userIndexPage.topMenu.logout();
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void addProductAndLogin() {
         IndexPage indexPage = new IndexPage();
         SearchResultPage searchResult = indexPage.search.search("iMac");

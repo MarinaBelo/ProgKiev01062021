@@ -33,7 +33,7 @@ public class LoginTest extends BaseUITest {
         };
     }
 
-    @Test(dataProvider = "loginData", groups = {"smoke"})
+    @Test(dataProvider = "loginData", groups = {"smoke", "regression"})
     public void loginTest(String email, String password, String errorMessage) {
         IndexPage landingPage = new IndexPage();
         landingPage.topMenu.language.selectValue(1); // Русский

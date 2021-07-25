@@ -26,7 +26,7 @@ public class TopMenuTest extends BaseUITest {
             //"Spanish"
     };
 
-    @Test
+    @Test(groups = {"regression"})
     public void topMenuTest (){
         IndexPage indexPage = new IndexPage();
 

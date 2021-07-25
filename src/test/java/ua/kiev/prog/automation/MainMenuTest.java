@@ -26,7 +26,7 @@ public class MainMenuTest extends BaseUITest {
         };
     }
 
-    @Test(dataProvider = "mainMenuItems")
+    @Test(dataProvider = "mainMenuItems", groups = {"regression"})
     public void mainMenuTest(String menu, String subMenu, Integer expectedElementCount){
         IndexPage indexPage = new IndexPage();
         CategoryPage categoryPage = indexPage.mainMenu.goToMenu(menu, subMenu);             //после клика->newPage
@@ -35,7 +35,7 @@ public class MainMenuTest extends BaseUITest {
                             "Count of products is not correct");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void checkMenuMap() {
         // structure
 /*        Map<Integer, Category.Item> categoryMap = db.category.getCategories();

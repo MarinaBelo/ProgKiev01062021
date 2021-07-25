@@ -14,7 +14,7 @@ public class SearchTest extends BaseUITest {
     static private final String SEARCH_PAGE_URL       = Config.SITE_URL.value + "/index.php?route=product/search";
     int expectedQuantityOfElementsResult              = 1;
 
-    @Test
+    @Test(groups = {"regression"})
     public void searchPageTest(){
         SearchPage searchPage = new SearchPage();
         //Поиск продукта на сайте
