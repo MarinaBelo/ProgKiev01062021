@@ -9,7 +9,6 @@ import ua.kiev.prog.automation.ui.pages.CategoryPage;
 import ua.kiev.prog.automation.ui.pages.IndexPage;
 
 import java.util.List;
-import java.util.Map;
 
 public class MainMenuTest extends BaseUITest {
 
