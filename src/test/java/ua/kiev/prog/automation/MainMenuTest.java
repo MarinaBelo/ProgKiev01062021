@@ -37,23 +37,19 @@ public class MainMenuTest extends BaseUITest {
 
     @Test(groups = {"regression"})
     public void checkMenuMap() {
-        // structure
-/*        Map<Integer, Category.Item> categoryMap = db.category.getCategories();
-        for (Map.Entry<Integer, Category.Item> pair: categoryMap.entrySet()){
-            Category.Item item = pair.getValue();
-            System.out.println(pair.getKey() + " -[" + item.getCategoryId() +
-                    " ," +item.getParentId() +" ," + item.getName() + " -]"
-                    );
-        }*/
+        IndexPage indexPage = new IndexPage();
 
         List<Category.TreeItem> tree = db.category.getCategoriesTree();
         for (Category.TreeItem treeItem : tree) {
             System.out.println(treeItem.getItem().getName() + " - " + treeItem.getChilds().size());
+            if(treeItem.getChilds().size()==0)
+                indexPage.mainMenu.goToMenu(treeItem.getItem().getName());
             for (Category.TreeItem childTreeItem : treeItem.getChilds()) {
                 System.out.println("\t" + childTreeItem.getItem().getName() + " - " + childTreeItem.getChilds().size());
-                for (Category.TreeItem subChildTreeItem : childTreeItem.getChilds()) {
+                /*for (Category.TreeItem subChildTreeItem : childTreeItem.getChilds()) {
                     System.out.println("\t\t" + subChildTreeItem.getItem().getName() + " - " + subChildTreeItem.getChilds().size());
-                }
+                }*/
+                indexPage.mainMenu.goToMenu(treeItem.getItem().getName(), childTreeItem.getItem().getName());
             }
         }
     }
