@@ -33,7 +33,6 @@ public class LoginTest extends BaseUITest {
         };
     }
 
-    @Test(dataProvider = "loginData", groups = {"smoke"})
     public void loginTest(String email, String password, String errorMessage) {
         System.out.println(email);
         IndexPage landingPage = new IndexPage();
