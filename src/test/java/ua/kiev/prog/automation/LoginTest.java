@@ -35,8 +35,8 @@ public class LoginTest extends BaseUITest {
 
     @Test(dataProvider = "loginData", groups = {"smoke"})
     public void loginTest(String email, String password, String errorMessage) {
-        System.out.println(email);
         IndexPage landingPage = new IndexPage();
+        landingPage.topMenu.language.selectValue(1); // Русский
         LoginPage loginPage = landingPage.goToLoginPage();
         UserIndexPage accountPage = loginPage.login(email, password);
         Waiters.sleep(1000);
