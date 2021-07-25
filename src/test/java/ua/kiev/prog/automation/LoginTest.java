@@ -9,7 +9,6 @@ import ua.kiev.prog.automation.base.BaseUITest;
 import ua.kiev.prog.automation.base.Config;
 import ua.kiev.prog.automation.tools.Util;
 import ua.kiev.prog.automation.tools.Waiters;
-import ua.kiev.prog.automation.ui.pages.AccountPage;
 import ua.kiev.prog.automation.ui.pages.LoginPage;
 import ua.kiev.prog.automation.ui.pages.IndexPage;
 import ua.kiev.prog.automation.ui.pages.UserIndexPage;
@@ -34,7 +33,7 @@ public class LoginTest extends BaseUITest {
         };
     }
 
-    @Test(dataProvider = "loginData")
+    @Test(dataProvider = "loginData", groups = {"smoke"})
     public void loginTest(String email, String password, String errorMessage) {
         System.out.println(email);
         IndexPage landingPage = new IndexPage();
