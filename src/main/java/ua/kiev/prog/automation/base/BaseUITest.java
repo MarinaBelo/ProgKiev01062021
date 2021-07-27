@@ -2,8 +2,12 @@ package ua.kiev.prog.automation.base;
 
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -32,7 +36,14 @@ public class BaseUITest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void afterMethod() {
+    public void afterMethod(ITestResult result) {
+        if(result.getStatus()==ITestResult.FAILURE)
+            takeScreenshot();
         Session.getInstance().quit();
+    }
+
+    @Attachment(value="Screenshot", type = "image/png")
+    private byte[] takeScreenshot(){
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 }
