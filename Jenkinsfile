@@ -46,24 +46,30 @@ node {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// ----- Stage: Build && Run tests
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    stage('Build && Run tests') {
-        cleanWs()
-        checkout scm
-        bat "mvn clean"
-        bat "mvn test -Denv=${params.environment} -Dgroups=${params.groups} -Dno.gui=true"
+    try {
+        stage('Build && Run tests') {
+            cleanWs()
+            checkout scm
+            bat "mvn clean"
+            bat "mvn test -Denv=${params.environment} -Dgroups=${params.groups} -Dno.gui=true"
 
+        }
+    } catch(err){
+        throw err
     }
-    stage('Reports') {
-        bat "mvn allure:report"
-        publishHTML(
-                target: [
-                        reportName            : "Allure Report",
-                        reportDir             : "${WORKSPACE}/target/site/allure-maven-plugin",
-                        reportFiles           : "index.html",
-                        keepAll               : true,
-                        alwaysLinkToLastBuild : true,
-                        allowMissing          : false
-                ]
-        )
+    finally {
+        stage('Reports') {
+            bat "mvn allure:report"
+            publishHTML(
+                    target: [
+                            reportName           : "Allure Report",
+                            reportDir            : "${WORKSPACE}/target/site/allure-maven-plugin",
+                            reportFiles          : "index.html",
+                            keepAll              : true,
+                            alwaysLinkToLastBuild: true,
+                            allowMissing         : false
+                    ]
+            )
+        }
     }
 }
