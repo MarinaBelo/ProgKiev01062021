@@ -51,8 +51,19 @@ node {
         checkout scm
         bat "mvn clean"
         bat "mvn test -Denv=${params.environment} -Dgroups=${params.groups} -Dno.gui=true"
+
     }
     stage('Reports') {
-
+        bat "mvn allure:report"
+        publishHTML(
+                target: [
+                        reportName            : "Allure Report",
+                        reportDir             : "${WORKSPACE}/target/site/allure-maven-plugin",
+                        reportFiles           : "index.html",
+                        keepAll               : true,
+                        alwaysLinkToLastBuild : true,
+                        allowMissing          : false
+                ]
+        )
     }
 }

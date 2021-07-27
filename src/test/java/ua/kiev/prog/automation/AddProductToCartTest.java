@@ -1,5 +1,6 @@
 package ua.kiev.prog.automation;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,14 +17,17 @@ import ua.kiev.prog.automation.ui.widgets.product.ProductLayout;
 public class AddProductToCartTest extends BaseUITest {
 
     @BeforeMethod
+    @Description("Clear user cart")
     public void preconscious(){
         api.loginIntoWebsite();
         UserIndexPage userIndexPage = new UserIndexPage();
         userIndexPage.cart.clean();
+        Waiters.sleep(1000);
         userIndexPage.topMenu.logout();
     }
 
-    @Test(groups = {"regression"})
+    @Test(testName = "Add product and login", groups = {"smoke","regression"})
+    @Description("Search product, add to cart, login and check products")
     public void addProductAndLogin() {
         IndexPage indexPage = new IndexPage();
         SearchResultPage searchResult = indexPage.search.search("iMac");

@@ -29,8 +29,11 @@ public class MainMenuTest extends BaseUITest {
     @Test(dataProvider = "mainMenuItems", groups = {"regression"})
     public void mainMenuTest(String menu, String subMenu, Integer expectedElementCount){
         IndexPage indexPage = new IndexPage();
+        if(subMenu==null)
+            indexPage.mainMenu.goToMenu(menu);
+        else
+            indexPage.mainMenu.goToMenu(menu, subMenu);
         CategoryPage categoryPage = indexPage.mainMenu.goToMenu(menu, subMenu);             //после клика->newPage
-        //Integer actualElementCount = categoryPage.getProductCount();                      //на новой СategoryPage считаем
         Assert.assertEquals(categoryPage.getProductCount(), expectedElementCount,
                             "Count of products is not correct");
     }

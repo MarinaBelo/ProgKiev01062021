@@ -3,7 +3,6 @@ package ua.kiev.prog.automation.tools.db;
 import lombok.Builder;
 import lombok.Value;
 import org.apache.commons.text.StringEscapeUtils;
-import sun.reflect.generics.tree.Tree;
 import ua.kiev.prog.automation.base.Session;
 import java.sql.ResultSet;
 import java.sql.SQLException;

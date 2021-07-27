@@ -1,6 +1,7 @@
 package ua.kiev.prog.automation.base;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import ua.kiev.prog.automation.tools.Waiters;
@@ -24,6 +25,7 @@ public abstract class BasePage {
         }
     }
 
+    @Step("")
     final public void confirmPage(){
         int timeoutSec = 30;
         long endTime = Instant.now().getEpochSecond()+timeoutSec;       //возвращает текущее время в сек.

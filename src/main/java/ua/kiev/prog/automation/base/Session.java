@@ -10,10 +10,12 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 public class Session {
 
         // Паттерн синглтон, когда на всю программу есть только один экземпляр класса
-        final static private Session _instance = new Session();     // Приватное, статическое свойство для хранения экземпляра на уровне поля класса
+        final static private ThreadLocal <Session> _instance = new ThreadLocal<>();     // Приватное, статическое свойство для хранения экземпляра на уровне поля класса
 
         static public Session getInstance() {                       // Статический метод для получения экземпляра
-            return _instance;
+            if (_instance.get() == null)
+                _instance.set(new Session());
+            return _instance.get();
         }
 
         private Session() {
