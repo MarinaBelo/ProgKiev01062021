@@ -8,7 +8,6 @@ import ua.kiev.prog.automation.base.BaseUITest;
 import ua.kiev.prog.automation.base.Config;
 import ua.kiev.prog.automation.tools.Waiters;
 import ua.kiev.prog.automation.ui.pages.IndexPage;
-
 import ua.kiev.prog.automation.ui.pages.LoginPage;
 import ua.kiev.prog.automation.ui.pages.SearchResultPage;
 import ua.kiev.prog.automation.ui.pages.UserIndexPage;
@@ -44,7 +43,9 @@ public class AddProductToCartTest extends BaseUITest {
         LoginPage loginPage = searchResult.topMenu.goToAuthorization();
         UserIndexPage userIndexPage = loginPage.login(Config.SITE_USERNAME.value,Config.SITE_PASSWORD.value);
         Waiters.sleep(5000);
+        userIndexPage.topMenu.language.selectValue(0);
         Assert.assertEquals(userIndexPage.cart.getCartItemsNumber(), (Integer) 1, "Product count in cart is wrong");
         Assert.assertEquals(userIndexPage.cart.getCartPrice(), productPrice, "Price in cart is wrong");
+        userIndexPage.cart.clean();
     }
 }

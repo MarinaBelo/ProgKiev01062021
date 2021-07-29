@@ -9,6 +9,11 @@ public class Config {
     final static public Param BROWSER_NAME  = new Param("browser.name", "chrome", true);
     final static public Param NO_GUI        = new Param("no.gui",       "false",  true);
 
+    final static public Param TESTBED        = new Param("testbed",     "local",  true);
+    final static public Param GRID_HOST      = new Param("grid.host",   "localhost",  true);
+    final static public Param GRID_PORT      = new Param("grid.port",   "4444",  true);
+
+
     final static public Param SITE_URL      = new Param("site.url");
     final static public Param SITE_USERNAME = new Param("site.username");
     final static public Param SITE_PASSWORD = new Param("site.password");

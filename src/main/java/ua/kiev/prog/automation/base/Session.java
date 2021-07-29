@@ -6,6 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import ua.kiev.prog.automation.base.testbed.Testbed;
+import ua.kiev.prog.automation.base.testbed.TestbedGrid;
+import ua.kiev.prog.automation.base.testbed.TestbedLocal;
 
 public class Session {
 
@@ -30,12 +33,23 @@ public class Session {
         }
 
         // Описание объекта
+        private Testbed _testbed;
         private WebDriver _driver;                                  // Приватное свойство для хранения экземпляра веб драйвера
 
         final public WebDriver driver() {                           // Метод с использованием отложенной инициализацией,
             // драйвер будет создан не при создании объекта, а при вызове метода
             if (_driver == null) {
-                if (Config.BROWSER_NAME.value.equals("chrome")) {       // Блок кода перенесенный из BaseUITest
+                if("local".equalsIgnoreCase(Config.TESTBED.value)){
+                    _testbed = new TestbedLocal() ;
+                } else if ("grid".equalsIgnoreCase(Config.TESTBED.value)){
+                    _testbed = new TestbedGrid() ;
+                }else
+                    throw new RuntimeException("Unknown testbed "+ Config.TESTBED.value);
+
+                _driver = _testbed.createDriver();
+
+
+               /* if (Config.BROWSER_NAME.value.equals("chrome")) {       // Блок кода перенесенный из BaseUITest
                     WebDriverManager.chromedriver().setup();            // Download latest version of Chromedriver.exe
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--start-maximized");          // =driver.manage().window().maximize();
@@ -54,7 +68,7 @@ public class Session {
                         options.setHeadless(true);
                     }
                     _driver = new FirefoxDriver();
-                }
+                }*/
                  this._addShutdownHook();
                 _driver.get(Config.SITE_URL.value);                     // Go to basic URL
                 //driver.manage().window().maximize();

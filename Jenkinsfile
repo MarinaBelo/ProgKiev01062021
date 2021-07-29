@@ -35,8 +35,16 @@ properties([
                         choices: ['smoke','regression'],
                         description: '''
         Tags description
-      ''',
-                        name: 'groups'),
+      ''',      choice(
+                       choices: ['local','grid'],
+                        description: '',
+                        name: 'testbed'),
+
+                booleanParam(
+                        name: 'No_GUI',
+                        defaultValue: true,
+                        description: 'Run tests without GUI'
+                ),
         ])
 ])
 
@@ -51,7 +59,7 @@ node {
             cleanWs()
             checkout scm
             bat "mvn clean"
-            bat "mvn test -Denv=${params.environment} -Dgroups=${params.groups} -Dno.gui=true"
+            bat "mvn test -Denv=${params.environment} -Dgroups=${params.groups} -Dno.gui=${params.NO_GUI}, -Dtestbed=${params.testbed}"
 
         }
     } catch(err){
