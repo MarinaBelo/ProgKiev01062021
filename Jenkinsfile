@@ -35,7 +35,8 @@ properties([
                         choices: ['smoke','regression'],
                         description: '''
         Tags description
-      ''',      choice(
+      ''',),
+                choice(
                        choices: ['local','grid'],
                         description: '',
                         name: 'testbed'),
