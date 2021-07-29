@@ -26,21 +26,20 @@ properties([
         [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
         parameters([
                 choice(
+                        name: 'environment',
                         choices: ['dev', 'stg'],
-                        description: '''
-            Description
-      ''',
-                        name: 'environment'),
+                        description: ''
+                ),
                 choice(
+                        name: 'groups',
                         choices: ['smoke','regression'],
-                        description: '''
-        Tags description
-      ''',),
+                        description: ''
+                ),
                 choice(
-                       choices: ['local','grid'],
-                        description: '',
-                        name: 'testbed'),
-
+                        name: 'testbed',
+                        choices: ['local','grid'],
+                        description: ''
+                ),
                 booleanParam(
                         name: 'NO_GUI',
                         defaultValue: true,
