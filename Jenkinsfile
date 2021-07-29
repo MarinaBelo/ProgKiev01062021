@@ -42,7 +42,7 @@ properties([
                         name: 'testbed'),
 
                 booleanParam(
-                        name: 'No_GUI',
+                        name: 'NO_GUI',
                         defaultValue: true,
                         description: 'Run tests without GUI'
                 ),
