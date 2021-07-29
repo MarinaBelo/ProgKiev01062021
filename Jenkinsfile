@@ -40,6 +40,11 @@ properties([
                         choices: ['local','grid'],
                         description: ''
                 ),
+                choice(
+                        name: 'browser',
+                        choices: ['chrome','firefox'],
+                        description: ''
+                ),
                 booleanParam(
                         name: 'NO_GUI',
                         defaultValue: true,
@@ -59,7 +64,7 @@ node {
             cleanWs()
             checkout scm
             bat "mvn clean"
-            bat "mvn test -Denv=${params.environment} -Dgroups=${params.groups} -Dno.gui=${params.NO_GUI}, -Dtestbed=${params.testbed}"
+            bat "mvn test -Denv=${params.environment} -Dgroups=${params.groups} -Dno.gui=${params.NO_GUI} -Dtestbed=${params.testbed} -Dbrowser.name=${params.browser}"
 
         }
     } catch(err){
